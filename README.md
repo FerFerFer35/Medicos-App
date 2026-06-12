@@ -44,21 +44,25 @@ cd Medicos-App
 docker compose up -d
 ```
 
-### 3. Instalar dependencias
+### 3. Instalar dependencias de PHP
 
 ```bash
 composer install
 ```
 
-### 4. Crear archivo de entorno
+### 4. Instalar dependencias de Node.js
+
+```bash
+npm install --ignore-scripts
+```
+
+### 5. Crear archivo de entorno
 
 ```bash
 cp .env.example .env
 ```
 
-### 5. Configurar la conexión a la base de datos
-
-Verificar que los valores del archivo `.env` coincidan con la configuración definida en `docker-compose.yml`.
+### 6. Configurar la conexión a la base de datos
 
 ```env
 DB_CONNECTION=mysql
@@ -69,45 +73,30 @@ DB_USERNAME=user
 DB_PASSWORD=password
 ```
 
-La base de datos MySQL se ejecuta mediante Docker Compose utilizando la imagen oficial de MySQL 8.0. Al iniciar los contenedores, se creará automáticamente la base de datos `medicos_db` y el usuario configurado para la conexión de Laravel.
-
-
-
-
-### 6. Generar clave de aplicación
+### 7. Generar clave de aplicación
 
 ```bash
 php artisan key:generate
 ```
 
-### 7. Ejecutar migraciones
+### 8. Ejecutar migraciones
 
 ```bash
 php artisan migrate
 ```
 
-### 8. Cargar datos de prueba (Opcional)
-
-```bash
-php artisan db:seed
-```
-
-o
+### 9. Cargar datos de prueba (Opcional)
 
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-### 9. Iniciar servidor de desarrollo
+### 10. Iniciar el servidor de desarrollo
+
+Terminal 1:
 
 ```bash
 composer run dev
-```
-
-La aplicación estará disponible en:
-
-```text
-http://localhost:8000
 ```
 
 ## Archivo SQL
@@ -132,7 +121,7 @@ Esto creará automáticamente médicos de prueba para validar las funcionalidade
 
 ## Decisiones Técnicas
 
-* Se utilizó Laravel 12 siguiendo el patrón MVC.
+* Se utilizó Laravel 13 siguiendo el patrón MVC.
 * Se empleó Eloquent ORM para prevenir vulnerabilidades de Inyección SQL.
 * Se implementaron Form Requests para centralizar las validaciones.
 * Se utilizaron Seeders y Factories para generar datos de prueba.
