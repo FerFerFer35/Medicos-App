@@ -58,16 +58,21 @@ cp .env.example .env
 
 ### 5. Configurar la conexión a la base de datos
 
-Verificar que los valores del archivo `.env` coincidan con los definidos en `docker-compose.yml`.
+Verificar que los valores del archivo `.env` coincidan con la configuración definida en `docker-compose.yml`.
 
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=medicos_db
-DB_USERNAME=root
-DB_PASSWORD=root
+DB_USERNAME=user
+DB_PASSWORD=password
 ```
+
+La base de datos MySQL se ejecuta mediante Docker Compose utilizando la imagen oficial de MySQL 8.0. Al iniciar los contenedores, se creará automáticamente la base de datos `medicos_db` y el usuario configurado para la conexión de Laravel.
+
+
+
 
 ### 6. Generar clave de aplicación
 
